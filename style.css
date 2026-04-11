@@ -41,6 +41,7 @@ html {
 body {
   position: relative;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .container {
@@ -684,6 +685,11 @@ a {
 }
 
 @media (max-width: 768px) {
+  [data-aos="fade-left"],
+  [data-aos="fade-right"] {
+    transform: translate3d(0, 40px, 0) !important;
+  }
+
   .menu-toggle { 
     display: block; 
     z-index: 1001; 
@@ -692,7 +698,7 @@ a {
   .nav-links { 
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     height: 100vh;
     width: 80%;
     max-width: 350px;
@@ -705,10 +711,11 @@ a {
     align-items: center;
     transition: var(--transition);
     z-index: 1000;
+    transform: translateX(100%);
   }
   
   .nav-links.active {
-    right: 0;
+    transform: translateX(0);
     box-shadow: -10px 0 30px rgba(0,0,0,0.5);
   }
 
