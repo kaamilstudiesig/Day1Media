@@ -24,6 +24,10 @@
   --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html {
   font-family: var(--font-body);
   background: var(--bg-color);
@@ -558,7 +562,7 @@ a {
 
 .testi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2.5rem;
   margin-top: 3rem;
 }
@@ -739,11 +743,36 @@ a {
   }
 
   .hero {
-    padding-top: 6rem;
+    padding-top: 4rem;
   }
 
   .hero h1 {
-    font-size: 2.3rem;
+    font-size: 2.7rem;
     line-height: 1.2;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+  
+  .about-text h2, .contact-text h2, .section-title h2 {
+    font-size: 2.2rem;
+  }
+  
+  .testi-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .contact-form {
+    padding: 1.5rem;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 0.9rem 1.2rem;
+  }
+  
+  .feature-item {
+    padding: 1.5rem;
   }
 }

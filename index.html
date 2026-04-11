@@ -29,7 +29,7 @@
   <header class="glass-nav">
     <div class="container nav-wrap">
       <a href="#" class="logo">
-        <img src="images/Day1 Media.jpeg" alt="Day1 Media Official Logo" class="nav-logo">
+        <img src="images/Day1 Media.png" alt="Day1 Media Official Logo" class="nav-logo">
       </a>
       <div class="menu-toggle" id="mobile-menu">
         <i class="fa-solid fa-bars"></i>
@@ -235,7 +235,7 @@
         <p>Drop your details below and we'll get back to you with a custom strategy.</p>
       </div>
       <div class="contact-form glass-card" data-aos="fade-up">
-        <form action="#" method="POST">
+        <form action="https://formsubmit.co/588305551bca642219841bfcd3407853" method="POST">
           <div class="form-group">
             <input type="text" name="name" placeholder="Full Name" required>
           </div>
@@ -341,19 +341,22 @@
       });
     };
 
-    // Intersection Observer for Counters
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !hasRun) {
-          hasRun = true;
-          runCounters();
-        }
-      });
-    }, { threshold: 0.5 });
-
     const statsSection = document.querySelector('.stats');
-    if (statsSection) {
+    // Intersection Observer for Counters (robust across device sizes)
+    if (statsSection && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !hasRun) {
+            hasRun = true;
+            runCounters();
+            observer.unobserve(statsSection);
+          }
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
+
       observer.observe(statsSection);
+    } else if (statsSection) {
+      runCounters();
     }
 
     // Mobile Menu Toggle
