@@ -306,20 +306,6 @@
       }
     });
 
-    // Keep anchor targets visible under fixed header (especially after refresh with hash)
-    const adjustHashOffset = () => {
-      if (!window.location.hash) return;
-      const target = document.querySelector(window.location.hash);
-      if (!target || !header) return;
-
-      const headerHeight = header.offsetHeight;
-      const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 12;
-      window.scrollTo({ top: Math.max(top, 0), behavior: 'auto' });
-    };
-
-    window.addEventListener('load', () => setTimeout(adjustHashOffset, 0));
-    window.addEventListener('hashchange', () => setTimeout(adjustHashOffset, 0));
-
     // Counter Animation Logic
     const counters = document.querySelectorAll('.counter');
     let hasRun = false;
@@ -386,6 +372,15 @@
         const icon = mobileMenu.querySelector('i');
         icon.classList.remove('fa-xmark');
         icon.classList.add('fa-bars');
+      });
+    });
+
+    // Avoid sticky #contact on refresh when using Get Started CTAs
+    document.querySelectorAll('a.btn-primary-sm[href="#contact"], .hero-actions a.btn-primary[href="#contact"]').forEach(link => {
+      link.addEventListener('click', () => {
+        setTimeout(() => {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        }, 50);
       });
     });
   </script>
