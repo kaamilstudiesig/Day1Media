@@ -35,7 +35,12 @@ html {
   background: var(--bg-color);
   color: var(--text-main);
   scroll-behavior: smooth;
+  scroll-padding-top: 100px;
   overflow-x: hidden;
+}
+
+section[id] {
+  scroll-margin-top: 100px;
 }
 
 body {
@@ -685,6 +690,14 @@ a {
 }
 
 @media (max-width: 768px) {
+  html {
+    scroll-padding-top: 88px;
+  }
+
+  section[id] {
+    scroll-margin-top: 88px;
+  }
+
   [data-aos="fade-left"],
   [data-aos="fade-right"] {
     transform: translate3d(0, 40px, 0) !important;
@@ -735,6 +748,14 @@ a {
 }
 
 @media (max-width: 425px) {
+  html {
+    scroll-padding-top: 82px;
+  }
+
+  section[id] {
+    scroll-margin-top: 82px;
+  }
+
   .glass-nav {
     padding: 0.85rem 0;
   }
