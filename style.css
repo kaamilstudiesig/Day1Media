@@ -193,14 +193,14 @@ a {
   padding: 1.5rem 0;
   transition: var(--transition);
 }
-
+/*
 .glass-nav.scrolled {
   background: rgba(12, 12, 15, 0.85);
   backdrop-filter: blur(20px);
   padding: 1rem 0;
   border-bottom: 1px solid var(--glass-border);
 }
-
+*/
 .nav-wrap {
   display: flex;
   justify-content: space-between;
